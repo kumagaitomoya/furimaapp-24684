@@ -5,7 +5,7 @@
 | Column             | Type     |Options                   |
 | ---------------    | -------- |-----------------------   |
 | nickname           | string   | null: false              |
-| encrypted_password | string   | null: false unique: true |
+| encrypted_password | string   | null: false              |
 | email              | string   | null: false unique: true |
 | last_name          | string   | null: false              |
 | first_name         | string   | null: false              |
