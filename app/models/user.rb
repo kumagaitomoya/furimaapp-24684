@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
     validates :password, presence: true,format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: 'Password Include both letters and numbers' }
     validates :nickname,:email,:birthday, presence: true
-    # validates :email, uniqueness: true
+    validates :email, uniqueness: true
 
     validates :last_name,:first_name,:last_name_kana,:first_name_kana,
                presence: true, presence: {message: 'can’t be black'}
