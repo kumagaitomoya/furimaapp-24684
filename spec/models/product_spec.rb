@@ -5,6 +5,7 @@ RSpec.describe Product, type: :model do
     @product = FactoryBot.build(:product)
   end
   describe '#create' do
+  context '出品機能がうまくいくとき' do
     it '全てが入力されれば出品できる' do
       expect(@product).to be_valid
     end
@@ -23,7 +24,8 @@ RSpec.describe Product, type: :model do
       @product.price = '9999999'
       expect(@product).to be_valid
     end
-
+   end
+   context '出品機能がうまくいくといかないとき' do
     it 'nameが空だと登録できない' do
       @product.name = ''
       @product.valid?
@@ -101,5 +103,36 @@ RSpec.describe Product, type: :model do
       @product.valid?
       expect(@product.errors.full_messages).to include('Price Half-width number')
     end
+    it 'condition_idが1だと登録できない' do
+    @product.condition_id = '1'
+    @product.valid?
+    expect(@product.errors.full_messages).to include('Condition Select')
+    end
+
+    it 'category_idが1だと登録できない' do
+      @product.category_id = '1'
+      @product.valid?
+      expect(@product.errors.full_messages).to include('Category Select')
+      end
+
+      it 'shipping_charges_idが1だと登録できない' do
+        @product.shipping_charges_id = '1'
+        @product.valid?
+        expect(@product.errors.full_messages).to include('Shipping charges Select')
+        end
+
+      it 'shipping_days_idが1だと登録できない' do
+        @product.shipping_days_id = '1'
+        @product.valid?
+        expect(@product.errors.full_messages).to include('Shipping days Select')
+          end
+      
+       it 'shipping_area_idが1だと登録できない' do
+        @product.shipping_area_id = '1'
+        @product.valid?
+        expect(@product.errors.full_messages).to include('Shipping area Select')
+        end
+
+  end
   end
 end
