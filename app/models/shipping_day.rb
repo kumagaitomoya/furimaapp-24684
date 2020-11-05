@@ -5,5 +5,4 @@ class ShippingDay < ActiveHash::Base
     { id: 3, name: '２日〜３日で発送' },
     { id: 4, name: '4日〜7日で発送' }
   ]
-  
 end
