@@ -8,24 +8,15 @@ class Product < ApplicationRecord
   belongs_to :shipping_area
   belongs_to :shipping_day
   
-  validates :image, :name,:status,:price,presence: true
-  validates :category_id, numericality: { other_than: 1 }
-  validates :condition_id, numericality: { other_than: 1 }
-  validates :shipping_charges_id, numericality: { other_than: 1 }
-  validates :shipping_area_id, numericality: { other_than: 1 }
-  validates :shipping_days_id, numericality: { other_than: 1 }
+  validates :image, :name,:status,presence: true
+  validates :category_id, numericality: { other_than: 1,message: 'Select' }
+  validates :condition_id, numericality: { other_than: 1,message: 'Select' }
+  validates :shipping_charges_id, numericality: { other_than: 1 ,message: 'Select'}
+  validates :shipping_area_id, numericality: { other_than: 1,message: 'Select' }
+  validates :shipping_days_id, numericality: { other_than: 1,message: 'Select' }
+  validates :price, format: { with: /\A[0-9]+\z/, message: 'Half-width number' }
+  validates :price,presence: true,numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999,message: 'Out of setting range'}
 end
 
 
 
-# Image can't be blank 完了
-# Name can't be blank　完了
-# Info can't be blank　完了
-# Price can't be blank　完了
-# Price Half-width number 
-# Price Out of setting range
-# Category Select
-# Sales status Select
-# Shipping fee status Select
-# Prefecture Select
-# Scheduled delivery Select
