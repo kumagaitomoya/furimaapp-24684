@@ -1,29 +1,21 @@
-class ProductsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-
-  def index
-    @product = Product.all
-  end
-
-  def new
-    @product = Product.new
-  end
-
-  def create
-    @product = Product.new(product_params)
-    if @product.save
-      redirect_to root_path
-    else
-      render :new
+class CreateProducts < ActiveRecord::Migration[6.0]
+  def change
+    create_table :products do |t|
+      t.string  :name,                  null: false
+      t.text    :status,                null: false
+      t.integer :price,                 null: false
+      t.integer :category_id,           null: false
+      t.integer :shipping_charges_id,   null: false
+      t.integer :shipping_days_id,      null: false
+      t.integer :shipping_area_id,      null: false
+      t.integer :condition_id,          null: false
+      t.references :user, foreign_key: true
+      t.timestamps
     end
   end
-
-  private
-
-  def product_params
-    params.require(:product).permit(:name, :status, :image, :price, :category_id, :shipping_charges_id, :shipping_days_id, :shipping_area_id, :condition_id).merge(user_id: current_user.id)
-  end
 end
+
+
 
 # | Column              | Type       | Options                       |
 # | ----------------    | ---------- | ----------------------------- |
