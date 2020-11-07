@@ -4,18 +4,18 @@ class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
-  belongs_to :shipping_charges
+  belongs_to :shipping_charge
   belongs_to :shipping_area
-  belongs_to :shipping_days
+  belongs_to :shipping_day
 
   validates :image, :name, :status, presence: true
 
   with_options numericality: { other_than: 1, message: 'Select' } do
     validates :category_id
     validates :condition_id
-    validates :shipping_charges_id
+    validates :shipping_charge_id
     validates :shipping_area_id
-    validates :shipping_days_id
+    validates :shipping_day_id
   end
 
   validates :price, presence: true, numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
