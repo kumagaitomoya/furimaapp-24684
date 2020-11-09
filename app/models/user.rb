@@ -17,4 +17,5 @@ class User < ApplicationRecord
             format: { with: /\A[ァ-ヶー－]+\z/, message: 'Full-width katakana characters' }
 
   has_many :products
+  has_many :buyers
 end
