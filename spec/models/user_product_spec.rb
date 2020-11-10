@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe UserProduct, type: :model do
   before do
-  @user_product = FactoryBot.build(:user_product)
+    @user_product = FactoryBot.build(:user_product)
   end
- 
+
   it 'すべての値が正しく入力されていれば保存できること' do
     expect(@user_product).to be_valid
   end
@@ -41,7 +41,7 @@ RSpec.describe UserProduct, type: :model do
   it 'shipping_area_idが空だと保存できないこと' do
     @user_product.shipping_area_id = nil
     @user_product.valid?
-    expect(@user_product.errors.full_messages).to include("Shipping area Select")
+    expect(@user_product.errors.full_messages).to include('Shipping area Select')
   end
 
   it 'tokenが空だと保存できないこと' do
@@ -59,13 +59,12 @@ RSpec.describe UserProduct, type: :model do
   it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
     @user_product.postal_code = '1234567'
     @user_product.valid?
-    expect(@user_product.errors.full_messages).to include("Postal code Input correctly")
+    expect(@user_product.errors.full_messages).to include('Postal code Input correctly')
   end
 
   it 'phone_namberが半角のハイフンを含むと保存できないこと' do
     @user_product.postal_code = '123-4567910'
     @user_product.valid?
-    expect(@user_product.errors.full_messages).to include("Postal code Input correctly")
+    expect(@user_product.errors.full_messages).to include('Postal code Input correctly')
   end
-  
 end
