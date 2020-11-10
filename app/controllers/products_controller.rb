@@ -41,8 +41,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy if current_user.id == @product.user.id
     redirect_to root_path
-  
-   end
+  end
 
   private
 
@@ -55,14 +54,4 @@ def set_product
   @product = Product.find(params[:id])
 end
 
-# | Column              | Type       | Options                       |
-# | ----------------    | ---------- | ----------------------------- |
-# | user                | references | null: false,foreign_key: true |
-# | name                | string     | null: false                   |
-# | status              | text       | null: false                   |
-# | price               | integer    | null: false                   |
-# | category_id         | integer    | null: false                   |
-# | shipping_charges_id | integer    | null: false                   |
-# | shipping_days_id    | integer    | null: false                   |
-# | shipping_area_id    | integer    | null: false                   |
-# | condition_id        | integer    | null: false                   |
+
