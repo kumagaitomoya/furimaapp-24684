@@ -1,8 +1,9 @@
 class BuyersController < ApplicationController
+  before_action :set_product, only: [:index, :create]
   before_action :authenticate_user!, only: [:index]
+  
   def index
     @user_product = UserProduct.new
-    @product = Product.find(params[:product_id])
     
      if current_user.id == @product.user_id || @product.buyer.present?
        redirect_to root_path
@@ -15,7 +16,6 @@ class BuyersController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @user_product = UserProduct.new(product_params)
     if @user_product.valid?
       pay_product
@@ -40,4 +40,9 @@ class BuyersController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+  
 end
