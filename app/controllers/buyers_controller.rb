@@ -9,12 +9,14 @@ class BuyersController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
-    @user_product = UserProduct.new (product_params)
+    @user_product = UserProduct.new(product_params)
     if  @user_product.valid?
       # binding.pry
       pay_product
        @user_product.save
-       redirect_to action: :index
+       redirect_to root_path
+       else
+       render action: :index
      end
   end
 
