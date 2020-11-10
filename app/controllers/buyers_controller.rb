@@ -1,7 +1,13 @@
 class BuyersController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   def index
     @user_product = UserProduct.new
     @product = Product.find(params[:product_id])
+     if @user_product.user_id == @product.user_id
+        render action: :index
+     else
+        redirect_to root_path
+      end
   end
 
   def new
@@ -11,7 +17,6 @@ class BuyersController < ApplicationController
     @product = Product.find(params[:product_id])
     @user_product = UserProduct.new(product_params)
     if  @user_product.valid?
-      # binding.pry
       pay_product
        @user_product.save
        redirect_to root_path
