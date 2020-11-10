@@ -67,4 +67,11 @@ RSpec.describe UserProduct, type: :model do
     @user_product.valid?
     expect(@user_product.errors.full_messages).to include('Postal code Input correctly')
   end
+
+  it 'phone_namberが12桁以上だと保存できないこと' do
+    @user_product.postal_code = '123456789101112'
+    @user_product.valid?
+    expect(@user_product.errors.full_messages).to include('Postal code Input correctly')
+  end
+
 end

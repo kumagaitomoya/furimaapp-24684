@@ -26,13 +26,17 @@
     </div>
 
     <% if user_signed_in? %> 
-      <% if current_user == @product.user%> 
+    <% if @product.buyer == nil %>  
+          <%= link_to '購入画面に進む', product_buyers_path(@product), class:"item-red-btn"%> 
+
+   <% elsif @product.buyer.present? %> 
+
+   <% else current_user == @product.user  %> 
           <%= link_to '商品の編集',  edit_product_path, method: :get, class: "item-red-btn" %>
           <p class='or-text'>or</p>
           <%= link_to '削除', product_path, method: :delete, class:'item-destroy' %>
-      <% elsif @product.buyer == nil %>  
-          <%= link_to '購入画面に進む', product_buyers_path(@product), class:"item-red-btn"%> 
-      <% end %>
+     
+     <%end %>
     <% end %> 
 
 
