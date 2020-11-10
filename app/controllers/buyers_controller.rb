@@ -4,7 +4,7 @@ class BuyersController < ApplicationController
     @user_product = UserProduct.new
     @product = Product.find(params[:product_id])
     
-     if current_user.id == @product.user_id 
+     if current_user.id == @product.user_id || @product.buyer.present?
        redirect_to root_path
      else
       render action: :index
