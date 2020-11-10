@@ -5,6 +5,7 @@ class BuyersController < ApplicationController
   def index
     @user_product = UserProduct.new
     
+    
      if current_user.id == @product.user_id || @product.buyer.present?
        redirect_to root_path
      else
@@ -40,9 +41,9 @@ class BuyersController < ApplicationController
       currency: 'jpy'
     )
   end
-
-  def set_product
-    @product = Product.find(params[:id])
-  end
-  
 end
+
+def set_product
+  @product = Product.find(params[:id])
+end
+
