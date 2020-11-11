@@ -48,10 +48,12 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :status, :image, :price, :category_id, :shipping_charge_id, :shipping_day_id, :shipping_area_id, :condition_id).merge(user_id: current_user.id)
   end
-end
 
-def set_product
+
+ def set_product
   @product = Product.find(params[:id])
+ end
+
 end
 
 

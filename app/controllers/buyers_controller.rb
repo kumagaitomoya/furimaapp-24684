@@ -40,9 +40,11 @@ class BuyersController < ApplicationController
       currency: 'jpy'
     )
   end
-end
 
-def set_product
+
+ def set_product
   @product = Product.find(params[:product_id])
+ end
+
 end
 
