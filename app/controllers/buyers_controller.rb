@@ -4,6 +4,7 @@ class BuyersController < ApplicationController
   
   def index
     @user_product = UserProduct.new
+
      if current_user.id == @product.user_id || @product.buyer.present?
        redirect_to root_path
      else
@@ -15,7 +16,6 @@ class BuyersController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @user_product = UserProduct.new(product_params)
     if @user_product.valid?
       pay_product
@@ -43,6 +43,6 @@ class BuyersController < ApplicationController
 end
 
 def set_product
-  @product = Product.find(params[:id])
+  @product = Product.find(params[:product_id])
 end
 
