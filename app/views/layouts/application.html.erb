@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Furimaapp24684</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-
-   <script type="text/javascript" src="https://js.pay.jp/v1/"></script>
-  <%= stylesheet_link_tag 'application', media: 'all'  %>
+<head>
+  <title>Furima</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <script type="text/javascript" src="https://js.pay.jp/v1/"></script>
+  <%= stylesheet_link_tag 'application', media: 'all'%>
   <%= javascript_pack_tag 'application' %>
- 
-  </head>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <%= yield %>
+</body>
+
 </html>
